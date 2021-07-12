@@ -1,5 +1,4 @@
 from django.shortcuts import render
+from .forms import ResultForm
 
 
-def start(request):
-    return render(request, 'app/index.html', {})

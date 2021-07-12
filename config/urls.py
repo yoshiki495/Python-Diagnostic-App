@@ -18,11 +18,18 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    path('', views.base),
     path('admin/', admin.site.urls),
-    path('start/', views.start),
-    path('start/login/', views.signin, name="login"),
-    path('start/logout/', views.Signup.as_view(), name="logout"),
-    path('start/signup/', views.Signup.as_view(), name="signup"),
+    path('', views.start),
+    path('accounts/', include('allauth.urls')),
+    path('q1/', views.q1),
+    path('q2/', views.q1),
+    path('q3/', views.q1),
+    path('q4/', views.q1),
+    path('q5/', views.q1),
+    path('q1_post/', views.q1_post, name='q1_post'),
+    path('q2_post/', views.q2_post, name='q2_post'),
+    path('q3_post/', views.q3_post, name='q3_post'),
+    path('q4_post/', views.q4_post, name='q4_post'),
+    path('q5_post/', views.q5_post, name='q5_post'),
     path('chart/', views.chart, name='chart')
 ]

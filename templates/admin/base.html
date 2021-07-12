@@ -1,27 +1,27 @@
-{% load i18n static %}<!DOCTYPE html>
+{% load i18n static %}
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
-<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
+<html lang="{{ LANGUAGE_CODE|default:'en-us' }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}">
 <head>
 <title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}">
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static 'admin/css/base.css' %}{% endblock %}">
 {% if not is_popup and is_nav_sidebar_enabled %}
-  <link rel="stylesheet" type="text/css" href="{% static "admin/css/nav_sidebar.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/nav_sidebar.css' %}">
   <script src="{% static 'admin/js/nav_sidebar.js' %}" defer></script>
 {% endif %}
 {% block extrastyle %}{% endblock %}
-{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}">{% endif %}
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static 'admin/css/rtl.css' %}{% endblock %}">{% endif %}
 {% block extrahead %}{% endblock %}
 {% block responsive %}
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive.css" %}">
-    {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive_rtl.css" %}">{% endif %}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/responsive.css' %}">
+    {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% static 'admin/css/responsive_rtl.css' %}">{% endif %}
 {% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE">{% endblock %}
 </head>
 {% load i18n %}
 
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
-  data-admin-utc-offset="{% now "Z" %}">
+  data-admin-utc-offset="{% now 'Z' %}">
 
 <!-- Container -->
 <div id="container">
@@ -63,6 +63,21 @@
     {% block breadcrumbs %}
     <div class="breadcrumbs">
     <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+    <ul>
+        <li><a href="/start">start</a></li>
+        <li><a href="/accounts/login">login</a></li>
+        <li><a href="/accounts/logout">logout</a></li>
+        <!--<li><a href="/accounts/password/change">change password</a></li>
+        <li><a href="/accounts/password/reset">reset password mail</a></li>
+        <li><a href="/accounts/password/reset/done">reset password mail done</a></li>
+        <li><a href="/accounts/password/reset/key/<uid36>-<key>/">reset password</a></li>-->
+        <li><a href="/accounts/signup">signup</a></li>
+        <!--<li><a href="/accounts/confirm-email/">confirm user mail done</a></li>
+        <li><a href="/accounts/confirm-email/<key>">confirm user</a></li>
+        <li><a href="/accounts/email/">register or delete mail</a></li>-->
+        <li><a href="/q1">question</a></li>
+        <li><a href="/chart">chart</a></li>
+    </ul>
     {% if title %} &rsaquo; {{ title }}{% endif %}
     </div>
     {% endblock %}
@@ -78,7 +93,7 @@
         {% block messages %}
           {% if messages %}
             <ul class="messagelist">{% for message in messages %}
-              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+              <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
             {% endfor %}</ul>
           {% endif %}
         {% endblock messages %}
