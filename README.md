@@ -4,7 +4,7 @@
 
 ## デモ
 
-[![](https://img.youtube.com/vi/L3517hibi7A/0.jpg)](youtube.com/watch?v=L3517hibi7A)
+[![](https://img.youtube.com/vi/L3517hibi7A/0.jpg)](https://www.youtube.com/watch?v=L3517hibi7A)
 
 ## 開発時間
 
