@@ -17,5 +17,6 @@
 ## 使用技術
 - Python
 - Django
-- django-allauth
+- SQLite
+- Bootstrap
 - Chart.js
